@@ -55,8 +55,8 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
 
-                groupId = 'com.megahed.library'
-                artifactId = 'myPdfView'
+                groupId = 'com.github.MohamedAshraf9'
+                artifactId = 'pdfView'
                 version = '1.0'
             }
         }
