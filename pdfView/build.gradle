@@ -57,7 +57,7 @@ afterEvaluate {
 
                 groupId = 'com.github.MohamedAshraf9'
                 artifactId = 'pdfView'
-                version = '1.0.1'
+                version = '1.0.3'
             }
         }
     }
