@@ -11,7 +11,7 @@ android {
         targetSdk 32
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'lib-proguard-rules.txt'
+        consumerProguardFiles "consumer-rules.pro"
 
         externalNativeBuild {
             cmake {
@@ -49,15 +49,16 @@ dependencies {
 
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = "com.github.MohamedAshraf9"
+            artifactId = "pdfView"
+            version = "1.0.5"
 
-                groupId = 'com.github.MohamedAshraf9'
-                artifactId = 'pdfView'
-                version = '1.0.4'
+
+            afterEvaluate {
+                from components.release
             }
         }
     }
