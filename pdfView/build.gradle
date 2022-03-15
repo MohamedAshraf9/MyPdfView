@@ -1,12 +1,12 @@
 plugins {
     id 'com.android.library'
     //id 'com.github.dcendents.android-maven'
-   id 'com.jfrog.bintray'
+   //id 'com.jfrog.bintray'
     id 'maven-publish'
 }
 
-group = 'com.github.MohamedAshraf9'
-version = '1.0'
+//group = 'com.github.MohamedAshraf9'
+//version = '1.0'
 android {
     compileSdk 32
 
@@ -42,7 +42,7 @@ android {
         cmake {
             //path file('../pdfView/src/main/cpp/CMakeLists.txt')
             path file('src/main/cpp/CMakeLists.txt')
-            version '3.10.2'
+            version '3.18.1'
         }
     }
 
@@ -52,6 +52,21 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.4.1'
 
+}
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.github.philipplackner'
+                artifactId = 'android-pdfview'
+                version = '1.0'
+            }
+        }
+    }
 }
 
 /*publishing {
@@ -72,6 +87,7 @@ dependencies {
 
 
 
+/*
 
 afterEvaluate {
     publishing {
@@ -105,4 +121,4 @@ bintray {
             vcsTag = '0.1'
         }
     }
-}
+}*/

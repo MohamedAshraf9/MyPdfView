@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     String fileTypeString ="application/pdf";
     PDFView pdfView;
-Configurator configuration;
+    Configurator configuration;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
