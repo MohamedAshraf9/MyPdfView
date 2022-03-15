@@ -16,7 +16,6 @@
 package com.megahed.pdfview.source;
 
 import android.content.Context;
-
 import com.megahed.pdfview.PdfiumSDK;
 
 import java.io.IOException;

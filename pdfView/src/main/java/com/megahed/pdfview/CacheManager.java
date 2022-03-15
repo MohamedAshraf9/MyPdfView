@@ -15,12 +15,12 @@
  */
 package com.megahed.pdfview;
 
-
 import static com.megahed.pdfview.util.Constants.Cache.CACHE_SIZE;
 import static com.megahed.pdfview.util.Constants.Cache.THUMBNAILS_CACHE_SIZE;
 
 import android.graphics.RectF;
 
+import androidx.annotation.Nullable;
 
 import com.megahed.pdfview.model.PagePart;
 
@@ -30,7 +30,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
-class CacheManager {
+public class CacheManager {
 
     private final PriorityQueue<PagePart> passiveCache;
 
@@ -137,7 +137,7 @@ class CacheManager {
         collection.add(newPart);
     }
 
-
+    @Nullable
     private static PagePart find(PriorityQueue<PagePart> vector, PagePart fakePart) {
         for (PagePart part : vector) {
             if (part.equals(fakePart)) {

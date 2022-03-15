@@ -1,7 +1,5 @@
 package com.megahed.pdfview.scroll;
 
-import static com.megahed.pdfview.util.Util.getDP;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -16,6 +14,8 @@ import androidx.core.content.ContextCompat;
 
 import com.megahed.pdfview.PDFView;
 import com.megahed.pdfview.R;
+import com.megahed.pdfview.util.Util;
+
 
 public class DefaultScrollHandle extends RelativeLayout implements ScrollHandle {
 
@@ -86,7 +86,7 @@ public class DefaultScrollHandle extends RelativeLayout implements ScrollHandle 
             setBackground(background);
         }
 
-        LayoutParams lp = new LayoutParams(getDP(context, width), getDP(context, height));
+        LayoutParams lp = new LayoutParams(Util.getDP(context, width), Util.getDP(context, height));
         lp.setMargins(0, 0, 0, 0);
 
         LayoutParams tvlp = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -128,11 +128,10 @@ public class DefaultScrollHandle extends RelativeLayout implements ScrollHandle 
             pdfViewSize = pdfView.getWidth();
         }
         pos -= relativeHandlerMiddle;
-
         if (pos < 0) {
             pos = 0;
-        } else if (pos > pdfViewSize - getDP(context, HANDLE_SHORT)) {
-            pos = pdfViewSize - getDP(context, HANDLE_SHORT);
+        } else if (pos > pdfViewSize - Util.getDP(context, HANDLE_SHORT)) {
+            pos = pdfViewSize - Util.getDP(context, HANDLE_SHORT);
         }
 
         if (pdfView.isSwipeVertical()) {
@@ -151,11 +150,16 @@ public class DefaultScrollHandle extends RelativeLayout implements ScrollHandle 
             pos = getY();
             viewSize = getHeight();
             pdfViewSize = pdfView.getHeight();
-        } else {
+        } else if (pdfView.isOnDualPageMode() && pdfView.isOnLandscapeOrientation()){
+            pos = getX();
+            viewSize = getWidth();
+            pdfViewSize = pdfView.getWidth();
+        } else  {
             pos = getX();
             viewSize = getWidth();
             pdfViewSize = pdfView.getWidth();
         }
+
         relativeHandlerMiddle = ((pos + relativeHandlerMiddle) / pdfViewSize) * viewSize;
     }
 
@@ -204,7 +208,6 @@ public class DefaultScrollHandle extends RelativeLayout implements ScrollHandle 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
         if (!isPDFViewReady()) {
             return super.onTouchEvent(event);
         }

@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.megahed.pdfview.util;
+package com.megahed.pdfview.enms;
 
-public enum SnapEdge {
-    START, CENTER, END, NONE
+public enum FitPolicy {
+    WIDTH, HEIGHT, BOTH
 }

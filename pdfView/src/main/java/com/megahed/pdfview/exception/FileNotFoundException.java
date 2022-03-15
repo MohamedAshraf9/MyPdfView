@@ -15,6 +15,7 @@
  */
 package com.megahed.pdfview.exception;
 
+@Deprecated
 public class FileNotFoundException extends RuntimeException {
 
     public FileNotFoundException(String detailMessage) {

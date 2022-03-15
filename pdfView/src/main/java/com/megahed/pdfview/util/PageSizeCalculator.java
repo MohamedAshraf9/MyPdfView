@@ -16,6 +16,8 @@
 package com.megahed.pdfview.util;
 
 
+import com.megahed.pdfview.enms.FitPolicy;
+
 public class PageSizeCalculator {
 
     private FitPolicy fitPolicy;

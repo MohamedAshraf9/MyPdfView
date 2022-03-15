@@ -17,7 +17,6 @@ package com.megahed.pdfview.source;
 
 import android.content.Context;
 import android.os.ParcelFileDescriptor;
-
 import com.megahed.pdfview.PdfiumSDK;
 
 import java.io.File;

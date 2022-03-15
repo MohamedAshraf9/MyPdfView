@@ -25,7 +25,7 @@ public interface OnPageScrollListener {
      * Called on every move while scrolling
      *
      * @param page current page index
-     * @param positionOffset see {@link PDFView#getPositionOffset()}
+     * @param positionOffset
      */
     void onPageScrolled(int page, float positionOffset);
 }

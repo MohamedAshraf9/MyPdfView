@@ -27,7 +27,11 @@ import android.util.Log;
 import com.megahed.pdfview.exception.PageRenderingException;
 import com.megahed.pdfview.model.PagePart;
 
-
+/**
+ * A {@link Handler} that will process incoming {@link RenderingTask} messages
+ * and alert {@link )} when the portion of the
+ * PDF is ready to render.
+ */
 class RenderingHandler extends Handler {
     /**
      * {@link Message#what} kind of message this handler processes.

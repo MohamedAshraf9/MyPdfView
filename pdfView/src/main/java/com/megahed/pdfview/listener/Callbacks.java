@@ -19,9 +19,8 @@ import android.view.MotionEvent;
 
 import com.megahed.pdfview.link.LinkHandler;
 import com.megahed.pdfview.model.LinkTapEvent;
-
-
 public class Callbacks {
+
     /**
      * Call back object to call when the PDF is loaded
      */
@@ -41,6 +40,11 @@ public class Callbacks {
      * Call back object to call when the document is initially rendered
      */
     private OnRenderListener onRenderListener;
+
+    /**
+     * Call back object to call when the view is scrolled
+     */
+    private OnScrollListener onScrollListener;
 
     /**
      * Call back object to call when the page has changed
@@ -136,6 +140,16 @@ public class Callbacks {
     public void callOnZoomChange(double zoom) {
         if(onZoomChangeListener != null) {
             onZoomChangeListener.onZoomChanged(zoom);
+        }
+    }
+
+    public void setOnScroll(OnScrollListener onScrollListener) {
+        this.onScrollListener = onScrollListener;
+    }
+
+    public void callOnScroll(float x, float y) {
+        if (onScrollListener != null) {
+            onScrollListener.onScroll(x, y);
         }
     }
 
