@@ -3,6 +3,8 @@ plugins {
     id 'maven-publish'
 }
 
+group = 'com.github.MohamedAshraf9'
+version = '1.0'
 android {
     compileSdk 32
 
@@ -50,7 +52,7 @@ dependencies {
 
 }
 
-publishing {
+/*publishing {
     publications {
         mavenJava(MavenPublication) {
             //from components.java
@@ -63,20 +65,21 @@ publishing {
             }
         }
     }
-}
+}*/
 
 
 
 
 
-subprojects {
+afterEvaluate {
     publishing {
         publications {
-            mavenJava(MavenPublication) {
-                from components.java
-                afterEvaluate {
-                    artifactId = jar.archiveBaseName
-                }
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.MohamedAshraf9'
+                artifactId = 'pdfView'
+                version = '1.0'
             }
         }
     }
