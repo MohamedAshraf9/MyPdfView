@@ -13,16 +13,21 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.megahed.pdfview.PDFView;
+import com.megahed.pdfview.listener.OnLoadCompleteListener;
+import com.megahed.pdfview.model.Configurator;
+
 public class MainActivity extends AppCompatActivity {
 
     String fileTypeString ="application/pdf";
-    //PDFView pdfView;
-
+    PDFView pdfView;
+Configurator configuration;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //pdfView=findViewById(R.id.ppp);
+        pdfView=findViewById(R.id.ppp);
+        configuration=new Configurator();
         add_Book();
 
     }
@@ -34,19 +39,19 @@ public class MainActivity extends AppCompatActivity {
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, false);
         intent.setType(fileTypeString);
-        //someActivityResultLauncher.launch(intent);
+        someActivityResultLauncher.launch(intent);
 
 
     }
 
 
-   /* ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult()
+    ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult()
             , new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == Activity.RESULT_OK&&result.getData() != null) {
 
-                        pdfView.fromUri(result.getData().getData())
+                        configuration.fromUri(result.getData().getData())
                                 .enableAnnotationRendering(true)
                                 .pageSnap(false)
                                 .nightMode(false)
@@ -58,16 +63,16 @@ public class MainActivity extends AppCompatActivity {
                                 .onLoad(new OnLoadCompleteListener() {
                                     @Override
                                     public void loadComplete(int nbPages) {
-                                        Toast.makeText(MainActivity.this, " "+pdfView.getTextPage(0), Toast.LENGTH_SHORT).show();
+                                       // Toast.makeText(MainActivity.this, " "+pdfView.getTextPage(0), Toast.LENGTH_SHORT).show();
                                     }
-                                })
-                                .load();
+                                });
+                        pdfView.setConfigurator(configuration).load();
 
 
 
                     }
                 }
-            });*/
+            });
 
 
 }

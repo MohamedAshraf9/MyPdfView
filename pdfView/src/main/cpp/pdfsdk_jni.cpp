@@ -1042,7 +1042,7 @@ JNI_FUNC(jlong, PdfiumSDK, nativeAddTextAnnotation)(JNI_ARGS, jlong docPtr, int 
     // reload page
     pagePtr = loadPageInternal(env, doc, page_index);
 
-    jclass clazz = env->FindClass("com/megahed/mycplus/PdfiumSDK");
+    jclass clazz = env->FindClass("com/megahed/pdfview/PdfiumSDK");
     jmethodID callback = env->GetMethodID(clazz, "onAnnotationAdded",
                                           "(Ljava/lang/Integer;)Ljava/lang/Long;");
     env->CallObjectMethod(thiz, callback, page_index, pagePtr);
@@ -1523,7 +1523,7 @@ Java_com_megahed_pdfview_PdfiumSDK_nativeGetPageSizeByIndex(JNIEnv *env, jobject
     jint widthInt = (jint) (width * dpi / 72);
     jint heightInt = (jint) (height * dpi / 72);
 
-    jclass clazz = env->FindClass("com/megahed/mycplus/util/Size");
+    jclass clazz = env->FindClass("com/megahed/pdfview/util/Size");
     jmethodID constructorID = env->GetMethodID(clazz, "<init>", "(II)V");
     return env->NewObject(clazz, constructorID, widthInt, heightInt);
 
@@ -1975,7 +1975,7 @@ Java_com_megahed_pdfview_PdfiumSDK_nativeAddTextAnnotation(JNIEnv *env, jobject 
     // reload page
     pagePtr = loadPageInternal(env, doc, page_index);
 
-    jclass clazz = env->FindClass("com/megahed/mycplus/PdfiumSDK");
+    jclass clazz = env->FindClass("com/megahed/pdfview/PdfiumSDK");
     jmethodID callback = env->GetMethodID(clazz, "onAnnotationAdded",
                                           "(Ljava/lang/Integer;)Ljava/lang/Long;");
     env->CallObjectMethod(thiz, callback, page_index, pagePtr);
