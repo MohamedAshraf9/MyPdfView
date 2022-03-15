@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.library'
     id 'maven-publish'
-    id 'com.github.dcendents.android-maven'
 }
 
 android {
@@ -52,11 +51,11 @@ dependencies {
 
 publishing {
     publications {
-        release(MavenPublication) {
+        mavenJava(MavenPublication) {
+            //from components.java
             groupId = "com.github.MohamedAshraf9"
             artifactId = "pdfView"
             version = "1.0.5"
-
 
             afterEvaluate {
                 from components.release
@@ -64,3 +63,23 @@ publishing {
         }
     }
 }
+
+
+
+
+
+subprojects {
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+                afterEvaluate {
+                    artifactId = jar.archiveBaseName
+                }
+            }
+        }
+    }
+}
+
+
+
