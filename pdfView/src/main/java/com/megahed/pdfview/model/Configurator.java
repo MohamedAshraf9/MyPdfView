@@ -115,7 +115,9 @@ public class Configurator {
     }*/
 
 
-    public Configurator() { }
+    public Configurator() {
+
+    }
 
     private void Configurator(DocumentSource documentSource) {
         this.documentSource = documentSource;
@@ -150,9 +152,15 @@ public class Configurator {
      * Use stream as the pdf source. Stream will be written to bytearray, because native code does not
      * support Java Streams
      */
+    String s;
+    InputStreamSource inputStreamSource;
     public Configurator fromStream(InputStream stream) {
-        Configurator(new InputStreamSource(stream));
+        inputStreamSource=new InputStreamSource(stream,s);
+        Configurator(inputStreamSource);
         return this;
+    }
+    public String getS() {
+        return inputStreamSource.getS();
     }
 
     /** Use custom source as pdf source */

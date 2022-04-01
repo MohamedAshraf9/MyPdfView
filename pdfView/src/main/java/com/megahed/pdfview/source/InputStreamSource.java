@@ -16,6 +16,9 @@
 package com.megahed.pdfview.source;
 
 import android.content.Context;
+import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 import com.megahed.pdfview.PdfiumSDK;
 import com.megahed.pdfview.util.Util;
@@ -26,14 +29,23 @@ import java.io.InputStream;
 public class InputStreamSource implements DocumentSource {
 
     private InputStream inputStream;
+    private String s;
 
-    public InputStreamSource(InputStream inputStream) {
+    public InputStreamSource() {
+    }
+
+    public InputStreamSource(InputStream inputStream, String s) {
         this.inputStream = inputStream;
+        this.s = s;
     }
 
     @Override
     public void createDocument(Context context, PdfiumSDK core, String password) throws IOException {
          core.newDocument(Util.toByteArray(inputStream), password);
+         s=core.getS();
+    }
 
+    public String getS() {
+        return s;
     }
 }

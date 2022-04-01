@@ -1,18 +1,24 @@
 package com.megahed.pdfview;
 
+import android.app.Application;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.os.ParcelFileDescriptor;
 import android.util.ArrayMap;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Surface;
+import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 import com.megahed.pdfview.search.FPDFTextSearchContext;
 import com.megahed.pdfview.search.TextSearchContext;
 import com.megahed.pdfview.util.FileUtils;
 import com.megahed.pdfview.util.Size;
+import com.megahed.pdfview.util.Util;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -23,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("JniMissingFunction")
-public class PdfiumSDK {
+public class PdfiumSDK extends Application {
 
     private static final String TAG = "PDFSDK";
 
@@ -198,9 +204,17 @@ public class PdfiumSDK {
         mNativeDocPtr = nativeOpenDocument(numFd, password);
     }
 
+    private String s;
     public synchronized void newDocument(byte[] data, String password) throws IOException {
            mNativeDocPtr = nativeOpenMemDocument(data, password);
+           //s=new String(data);
+        s= Base64.encodeToString(data,Base64.DEFAULT);
     }
+
+    public synchronized String getS() {
+       return s;
+    }
+
 
     /**
      * Get total numer of pages in document

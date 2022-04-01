@@ -8,27 +8,54 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Toast;
 
 import com.megahed.pdfview.PDFView;
+import com.megahed.pdfview.PdfiumSDK;
+import com.megahed.pdfview.enms.FitPolicy;
 import com.megahed.pdfview.listener.OnLoadCompleteListener;
+import com.megahed.pdfview.listener.OnPageChangeListener;
+import com.megahed.pdfview.listener.OnTapListener;
 import com.megahed.pdfview.model.Configurator;
+import com.megahed.pdfview.scroll.DefaultScrollHandle;
+import com.megahed.pdfview.util.Util;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity {
 
     String fileTypeString ="application/pdf";
     PDFView pdfView;
     Configurator configuration;
+    MyPreferences myPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         pdfView=findViewById(R.id.ppp);
         configuration=new Configurator();
-        add_Book();
+        myPreferences=new MyPreferences(this);
+        //add_Book();
+        String url = "https://firebasestorage.googleapis.com/v0/b/professional-notes.appspot.com/o/books%2FPages%20from%20DOC012-5.pdf?alt=media&token=66fd7a9a-9b17-4402-b11c-fde51d5e1b7b";
+
+
+
+
+
 
     }
 
@@ -73,6 +100,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+
+
+
+
+
+
 
 
 }

@@ -17,6 +17,7 @@ package com.megahed.pdfview.util;
 
 import android.content.Context;
 import android.util.TypedValue;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -36,6 +37,11 @@ public class Util {
         while (-1 != (n = inputStream.read(buffer))) {
             os.write(buffer, 0, n);
         }
+
         return os.toByteArray();
     }
+
+
+
+
 }
