@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+        //new retire(this).execute(url);
 
     }
 
@@ -102,6 +102,74 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
+
+
+    class retire extends AsyncTask<String,Void, InputStream> implements OnPageChangeListener {
+
+
+        Context context;
+
+
+        public retire(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        protected InputStream doInBackground(String... strings) {
+            InputStream inputStream=null;
+            try {
+                URL url =new URL(strings[0]);
+                HttpURLConnection urlConnection =(HttpURLConnection)url.openConnection();
+                if (urlConnection.getResponseCode()==200){
+                    inputStream =new BufferedInputStream(urlConnection.getInputStream());
+                }
+
+            } catch (IOException e) {
+                return null;
+            }
+            return inputStream;
+
+        }
+
+        @Override
+        protected void onPostExecute(InputStream inputStream) {
+            if (inputStream!=null){
+                String s="";
+                configuration.fromStream(inputStream)
+                        .defaultPage(1)
+                        .enableSwipe(true)
+                        .enableDoubletap(true)
+                        .onPageChange(this)
+                        .pageFitPolicy(FitPolicy.BOTH)
+                        .enableAntialiasing(true)
+                        .enableAnnotationRendering(false)
+                        .onLoad(new OnLoadCompleteListener() {
+                            @Override
+                            public void loadComplete(int nbPages) {
+                                //Log.d("dwefrwerfewr",configuration.getS());
+                            }
+                        }).scrollHandle(new DefaultScrollHandle(context));
+                pdfView.setConfigurator(configuration).load();
+
+
+            }
+            else {
+                Toast.makeText(context,"error",Toast.LENGTH_LONG).show();
+            }
+
+
+
+
+
+
+
+        }
+
+        @Override
+        public void onPageChanged(int page, int pageCount) {
+
+        }
+    }
 
 
 
