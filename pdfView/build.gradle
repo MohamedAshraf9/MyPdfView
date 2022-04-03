@@ -61,9 +61,9 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
 
-                groupId = 'com.github.philipplackner'
+                groupId = 'com.github.MohamedAshraf9'
                 artifactId = 'android-pdfview'
-                version = '1.0'
+                version = '1.1'
             }
         }
     }
