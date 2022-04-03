@@ -210,13 +210,7 @@ public class PdfiumSDK extends Application {
            mNativeDocPtr = nativeOpenMemDocument(data, password);
            //s=new String(data);
         if (addS) {
-            AsyncTask.execute(new Runnable() {
-                @Override
-                public void run() {
-                    //do your background code
-                    s = Base64.encodeToString(data, Base64.DEFAULT);
-                }
-            });
+            s = Base64.encodeToString(data, Base64.DEFAULT);
         }
 
     }
