@@ -213,7 +213,7 @@ public class PdfiumSDK extends Application {
             AsyncTask.execute(new Runnable() {
                 @Override
                 public void run() {
-                    //TODO your background code
+                    //do your background code
                     s = Base64.encodeToString(data, Base64.DEFAULT);
                 }
             });
