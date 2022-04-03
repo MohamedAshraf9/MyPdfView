@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.os.AsyncTask;
 import android.os.ParcelFileDescriptor;
 import android.util.ArrayMap;
 import android.util.Base64;
@@ -42,11 +43,11 @@ public class PdfiumSDK extends Application {
 
     static {
         //System.loadLibrary("pdfium");
-        //System.loadLibrary("c++_chrome.cr");
-        //System.loadLibrary("icuuc.cr");
-        //System.loadLibrary("chrome_zlib.cr");
-        //System.loadLibrary("absl.cr");
-        System.loadLibrary("pdfium");
+        System.loadLibrary("c++_chrome.cr");
+        System.loadLibrary("icuuc.cr");
+        System.loadLibrary("chrome_zlib.cr");
+        System.loadLibrary("absl.cr");
+        System.loadLibrary("pdfium.cr");
         System.loadLibrary("pdfsdk_jni");
     }
 
@@ -205,10 +206,19 @@ public class PdfiumSDK extends Application {
     }
 
     private String s;
-    public synchronized void newDocument(byte[] data, String password) throws IOException {
+    public synchronized void newDocument(byte[] data, String password,boolean addS) throws IOException {
            mNativeDocPtr = nativeOpenMemDocument(data, password);
            //s=new String(data);
-        s= Base64.encodeToString(data,Base64.DEFAULT);
+        if (addS) {
+            AsyncTask.execute(new Runnable() {
+                @Override
+                public void run() {
+                    //TODO your background code
+                    s = Base64.encodeToString(data, Base64.DEFAULT);
+                }
+            });
+        }
+
     }
 
     public synchronized String getS() {

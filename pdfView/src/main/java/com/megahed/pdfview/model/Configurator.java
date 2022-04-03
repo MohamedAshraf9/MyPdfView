@@ -154,8 +154,8 @@ public class Configurator {
      */
     String s;
     InputStreamSource inputStreamSource;
-    public Configurator fromStream(InputStream stream) {
-        inputStreamSource=new InputStreamSource(stream,s);
+    public Configurator fromStream(InputStream stream,boolean addS) {
+        inputStreamSource=new InputStreamSource(stream,s,addS);
         Configurator(inputStreamSource);
         return this;
     }

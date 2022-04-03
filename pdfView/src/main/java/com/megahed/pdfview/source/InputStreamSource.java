@@ -30,18 +30,20 @@ public class InputStreamSource implements DocumentSource {
 
     private InputStream inputStream;
     private String s;
+    private boolean addS;
 
     public InputStreamSource() {
     }
 
-    public InputStreamSource(InputStream inputStream, String s) {
+    public InputStreamSource(InputStream inputStream, String s,boolean addS) {
         this.inputStream = inputStream;
         this.s = s;
+        this.addS = addS;
     }
 
     @Override
     public void createDocument(Context context, PdfiumSDK core, String password) throws IOException {
-         core.newDocument(Util.toByteArray(inputStream), password);
+         core.newDocument(Util.toByteArray(inputStream), password,addS);
          s=core.getS();
     }
 

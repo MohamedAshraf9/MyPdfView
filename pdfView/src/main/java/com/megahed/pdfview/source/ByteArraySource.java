@@ -32,7 +32,7 @@ public class ByteArraySource implements DocumentSource {
 
     @Override
     public void createDocument(Context context, PdfiumSDK core, String password) throws IOException {
-         core.newDocument(data, password);
+         core.newDocument(data, password,false);
 
     }
 }

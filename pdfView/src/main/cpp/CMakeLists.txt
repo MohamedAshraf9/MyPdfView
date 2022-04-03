@@ -65,9 +65,9 @@ set_target_properties(pdfsdk PROPERTIES IMPORTED_LOCATION
 
 # shared lib
 add_library(shared-lib1 SHARED IMPORTED)
-set_target_properties(shared-lib1 PROPERTIES IMPORTED_LOCATION ${Pdfium_DIR}/lib/${ANDROID_ABI}/libpdfium.so)
+set_target_properties(shared-lib1 PROPERTIES IMPORTED_LOCATION ${Pdfium_DIR}/lib/${ANDROID_ABI}/libpdfium.cr.so)
 
-#[[add_library(shared-lib2 SHARED IMPORTED)
+add_library(shared-lib2 SHARED IMPORTED)
 set_target_properties(shared-lib2 PROPERTIES IMPORTED_LOCATION ${Pdfium_DIR}/lib/${ANDROID_ABI}/libabsl.cr.so)
 
 add_library(shared-lib3 SHARED IMPORTED)
@@ -77,7 +77,7 @@ add_library(shared-lib4 SHARED IMPORTED)
 set_target_properties(shared-lib4 PROPERTIES IMPORTED_LOCATION ${Pdfium_DIR}/lib/${ANDROID_ABI}/libchrome_zlib.cr.so)
 
 add_library(shared-lib5 SHARED IMPORTED)
-set_target_properties(shared-lib5 PROPERTIES IMPORTED_LOCATION ${Pdfium_DIR}/lib/${ANDROID_ABI}/libc++_chrome.cr.so)]]
+set_target_properties(shared-lib5 PROPERTIES IMPORTED_LOCATION ${Pdfium_DIR}/lib/${ANDROID_ABI}/libc++_chrome.cr.so)
 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
@@ -109,7 +109,10 @@ target_include_directories(pdfsdk_jni PRIVATE
 target_link_libraries( # Specifies the target library.
         pdfsdk_jni
         shared-lib1
-
+        shared-lib2
+        shared-lib3
+        shared-lib4
+        shared-lib5
         jnigraphics
         android
         GLESv2
