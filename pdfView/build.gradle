@@ -54,7 +54,8 @@ dependencies {
 
 }
 
-
+group = 'com.github.MohamedAshraf9'
+version = '1.0'
 afterEvaluate {
     publishing {
         publications {
@@ -63,7 +64,7 @@ afterEvaluate {
 
                 groupId = 'com.github.MohamedAshraf9'
                 artifactId = 'MyPdfView'
-                version = 'releases/tag/1.1.3'
+                version = '1.0'
 
             }
         }
