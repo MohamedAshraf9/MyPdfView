@@ -62,9 +62,8 @@ afterEvaluate {
                 from components.release
 
                 groupId = 'com.github.MohamedAshraf9'
-                artifactId = 'android-mypdfview'
+                artifactId = 'android-pdfview'
                 version = '1.0'
-
             }
         }
     }
