@@ -63,7 +63,8 @@ afterEvaluate {
 
                 groupId = 'com.github.MohamedAshraf9'
                 artifactId = 'MyPdfView'
-                version = '1.1.2'
+                version = 'releases/tag/1.1.3'
+
             }
         }
     }
