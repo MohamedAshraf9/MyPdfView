@@ -42,11 +42,11 @@ public class PdfiumSDK extends Application {
 
     static {
         //System.loadLibrary("pdfium");
-        System.loadLibrary("c++_chrome.cr");
-        System.loadLibrary("icuuc.cr");
-        System.loadLibrary("chrome_zlib.cr");
-        System.loadLibrary("absl.cr");
-        System.loadLibrary("pdfium.cr");
+        //System.loadLibrary("c++_chrome.cr");
+        //System.loadLibrary("icuuc.cr");
+        //System.loadLibrary("chrome_zlib.cr");
+        //System.loadLibrary("absl.cr");
+        System.loadLibrary("pdfium");
         System.loadLibrary("pdfsdk_jni");
     }
 
