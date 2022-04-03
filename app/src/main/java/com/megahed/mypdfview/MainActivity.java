@@ -50,7 +50,12 @@ public class MainActivity extends AppCompatActivity {
         configuration=new Configurator();
         myPreferences=new MyPreferences(this);
         //add_Book();
+        String url = "https://firebasestorage.googleapis.com/v0/b/professional-notes.appspot.com/o/books%2FPages%20from%20DOC012-5.pdf?alt=media&token=66fd7a9a-9b17-4402-b11c-fde51d5e1b7b";
 
+
+
+
+        //new retire(this).execute(url);
 
     }
 
@@ -130,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(InputStream inputStream) {
             if (inputStream!=null){
                 String s="";
-                configuration.fromStream(inputStream)
+                configuration.fromStream(inputStream,false)
                         .defaultPage(1)
                         .enableSwipe(true)
                         .enableDoubletap(true)
