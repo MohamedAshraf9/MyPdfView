@@ -4,8 +4,6 @@ plugins {
    //id 'com.jfrog.bintray'
     id 'maven-publish'
 }
-group = 'com.github.MohamedAshraf9'
-version = '1.1.6'
 
 //group = 'com.github.MohamedAshraf9'
 //version = '1.0'
@@ -57,19 +55,20 @@ dependencies {
 }
 
 
-/*afterEvaluate {
+afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
                 from components.release
+
                 groupId = 'com.github.MohamedAshraf9'
-                artifactId = 'MyPdfView'
+                artifactId = 'android-mypdfview'
                 version = '1.0'
 
             }
         }
     }
-}*/
+}
 
 /*publishing {
     publications {
