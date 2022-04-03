@@ -54,14 +54,13 @@ dependencies {
 
 }
 
-group = 'com.github.MohamedAshraf9'
-version = '1.0'
+//group = 'com.github.MohamedAshraf9'
+//version = '1.0'
 afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
                 from components.release
-
                 groupId = 'com.github.MohamedAshraf9'
                 artifactId = 'MyPdfView'
                 version = '1.0'
